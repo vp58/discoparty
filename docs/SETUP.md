@@ -37,7 +37,7 @@ A Discord channel can remain public to server members. Public controls who can r
 ### Codex provider
 
 - The reviewed Apple M5 Max host. The provider installer checks the exact reported chip and refuses other models.
-- Official OpenAI Codex CLI `0.151.0` installed through the reviewed `/opt/homebrew` npm package layout
+- Official OpenAI Codex CLI `0.153.4` installed through the reviewed `/opt/homebrew` npm package layout
 - Access to the intended ChatGPT subscription for a separate browser sign-in during installation
 - A second Discord application and bot for Codex
 - The Codex application and bot are dedicated to this integration, and the bot belongs only to the configured Discord server
@@ -232,7 +232,7 @@ Confirm the reviewed CLI before running the installer:
 codex --version
 ```
 
-It must report `codex-cli 0.151.0`. Disco Party verifies the npm launcher path and hash, then executes the reviewed native arm64 binary directly. An unreviewed launcher, binary, version, schema, or App Server request set blocks installation.
+It must report `codex-cli 0.153.4`. Disco Party verifies the npm launcher path and hash, then executes the reviewed native arm64 binary directly. An unreviewed launcher, binary, version, schema, or App Server request set blocks installation.
 
 Do not rely on a normal `~/.codex` login for this service. The installer retains the real canonical macOS `HOME` so the official keyring backend can use the default Keychain. It creates a mode `0700` `CODEX_HOME` at `state_dir/home/.codex` with a mode `0600` reviewed config. If that isolated scope is not authenticated, the installer launches the official browser flow and requires **Sign in with ChatGPT**. In non-interactive mode, run the exact isolated login command printed by the installer, then retry.
 
@@ -345,7 +345,7 @@ A successful preflight confirms:
 - the effective credential backend is exactly `keyring`, filesystem secret storage is disabled, and no `auth.json` or sibling credential artifact exists
 - App Server `account/read` reports a ChatGPT account with a nonempty email and supported plan; only a domain-separated digest is retained in policy state
 - `OPENAI_API_KEY` is absent from the service environment
-- Codex CLI `0.151.0`, the launcher, native arm64 binary, generated experimental schema bundle, and server request methods match the reviewed pins
+- Codex CLI `0.153.4`, the launcher, native arm64 binary, generated experimental schema bundle, and server request methods match the reviewed pins
 - App Server reports `gpt-5.6-sol`, provider `openai`, Ultra reasoning, and the requested permission profile without fallback, and reports no administrator configuration requirements
 - the dedicated Discord token resolves to the exact configured bot and application
 - Discord returns the exact configured guild and a non-obfuscated `GUILD_TEXT` channel
@@ -531,7 +531,7 @@ The retained `discord-gateway/marker-watcher.py`, service templates, and `exampl
 
 ## 12. Upgrade the pinned Codex CLI and experimental protocol
 
-The official [Codex App Server documentation](https://learn.chatgpt.com/docs/app-server) explains that generated schemas are specific to the installed Codex version and that some methods and fields require `experimentalApi`. Disco Party opts in because the user has explicitly chosen the provider, then compensates by pinning and fail-closed validation. The reviewed baseline is Codex CLI `0.151.0`, `gpt-5.6-sol`, provider `openai`, and Ultra reasoning.
+The official [Codex App Server documentation](https://learn.chatgpt.com/docs/app-server) explains that generated schemas are specific to the installed Codex version and that some methods and fields require `experimentalApi`. Disco Party opts in because the user has explicitly chosen the provider, then compensates by pinning and fail-closed validation. The reviewed baseline is Codex CLI `0.153.4`, `gpt-5.6-sol`, provider `openai`, and Ultra reasoning.
 
 Do not point production at a freshly released CLI without review. Use this process:
 

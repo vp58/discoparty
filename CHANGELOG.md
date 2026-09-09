@@ -44,6 +44,10 @@ This project follows the spirit of Keep a Changelog and uses semantic versioning
 - Legacy dry-run Slack payload parser retained as unsupported reference material; the installer removes the obsolete marker-watcher and installs no outbound sender.
 - README badges, contents, and first-message walkthrough.
 
+### Changed
+
+- Moved the reviewed Codex CLI pin from `0.151.0` to `0.153.4`, with re-verified npm launcher and native arm64 binary SHA-256 hashes and a regenerated experimental schema bundle hash. The prior pin made the bridge refuse to start on a current Codex install.
+
 ## [0.1.0-pre] - 2026-05-24
 
 ### Added

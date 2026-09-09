@@ -38,7 +38,7 @@ KEYCHAIN_SERVICE="discoparty-secret"
 KEYCHAIN_ACCOUNT="discord-bot-token-codex"
 LEGACY_KEYCHAIN_SERVICE="thesystem-secret"
 LEGACY_KEYCHAIN_ACCOUNT="discord-bot-token-admin"
-EXPECTED_CODEX_VERSION="codex-cli 0.151.0"
+EXPECTED_CODEX_VERSION="codex-cli 0.153.4"
 REVIEWED_NATIVE_CODEX_BIN="/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex"
 
 SCRATCH=0

@@ -88,7 +88,7 @@ The unit suites use mocks and local files. They do not prove that a live Discord
 
 OpenAI currently labels App Server experimental. Consult the official [Codex App Server documentation](https://learn.chatgpt.com/docs/app-server), [CLI reference](https://developers.openai.com/codex/cli/reference), and [changelog](https://learn.chatgpt.com/docs/changelog) before changing the integration.
 
-The current reviewed baseline is Codex CLI `0.151.0`, native arm64, model `gpt-5.6-sol`, provider `openai`, and Ultra reasoning. The worker preserves the canonical user `HOME` for local computer access but sets an isolated `CODEX_HOME`; do not make it inherit normal `~/.codex` credentials or configuration.
+The current reviewed baseline is Codex CLI `0.153.4`, native arm64, model `gpt-5.6-sol`, provider `openai`, and Ultra reasoning. The worker preserves the canonical user `HOME` for local computer access but sets an isolated `CODEX_HOME`; do not make it inherit normal `~/.codex` credentials or configuration.
 
 The service also uses a private immutable Python venv whose path binds the CPython version, dependency version, and Apple Silicon lock hash. Update the lock, path identity, staging and atomic-publication logic, installed-distribution verification, and private manifest together when changing Python dependencies. Do not mutate an existing published runtime in place. Do not re-enable project-document discovery or automatic workspace `AGENTS.md` loading for Discord-triggered work.
 

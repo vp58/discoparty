@@ -154,7 +154,7 @@ Before installation, read the [security model](docs/SECURITY.md), [security boar
 
 Disco Party began as a private Claude orchestrator that has run unattended since May 21, 2026. The public Claude installation path followed on May 23, 2026. The M5 Max Codex bridge has passed its live Discord acceptance flow, installer and uninstaller smoke tests, and the repository test suite across Python 3.11, 3.12, and 3.13 in GitHub Actions.
 
-The project is still pre-release. The Codex integration uses an official OpenAI interface that OpenAI currently marks [experimental](https://developers.openai.com/codex/cli/reference). Disco Party therefore pins the reviewed Codex CLI `0.151.0`, `gpt-5.6-sol`, OpenAI provider, Ultra reasoning, native binary hashes, schema bundle, and request set. A newer CLI is rejected until those surfaces are reviewed and the live acceptance flow passes again.
+The project is still pre-release. The Codex integration uses an official OpenAI interface that OpenAI currently marks [experimental](https://developers.openai.com/codex/cli/reference). Disco Party therefore pins the reviewed Codex CLI `0.153.4`, `gpt-5.6-sol`, OpenAI provider, Ultra reasoning, native binary hashes, schema bundle, and request set. A newer CLI is rejected until those surfaces are reviewed and the live acceptance flow passes again.
 
 ## Current platform support
 

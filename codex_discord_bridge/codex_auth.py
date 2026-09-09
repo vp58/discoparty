@@ -15,18 +15,18 @@ from pathlib import Path
 # The child receives an allowlist, not a copy of the launchd environment. In
 # particular, API keys and the Discord token never enter the App Server child.
 SAFE_ENV_VARS = {"LANG", "LC_ALL", "LC_CTYPE", "TERM", "TZ"}
-SUPPORTED_CODEX_VERSION = "codex-cli 0.151.0"
+SUPPORTED_CODEX_VERSION = "codex-cli 0.153.4"
 SUPPORTED_LAUNCHER_REALPATH = Path(
     "/opt/homebrew/lib/node_modules/@openai/codex/bin/codex.js"
 )
-SUPPORTED_LAUNCHER_SHA256 = "134063e133f0b4244fa3b251acf973d4fe4b4aeeacbdc135211bf480f59f1477"
+SUPPORTED_LAUNCHER_SHA256 = "61b0194f3bb6534439c8d26a3ed57d0805f84b884588b761795323eeb92fcf70"
 SUPPORTED_NATIVE_REALPATH = Path(
     "/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/"
     "codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex"
 )
-SUPPORTED_NATIVE_SHA256 = "98491713ffb196061003ee148636e743997cc31d76144ba7c53462269896891d"
+SUPPORTED_NATIVE_SHA256 = "b973d440acac501fd2594a43e7ca9ce41e0a65b9dfb28d0d7a7837c99e1261e3"
 SUPPORTED_EXPERIMENTAL_SCHEMA_SHA256 = (
-    "18728b31d4074ab862849713cf90454bdd639e8ecc22068adc809658e38073ae"
+    "2c84857334e81aef586066634d753df4d570ada5e54aa5125c51bf6229f1c9ec"
 )
 EXPECTED_SERVER_REQUEST_METHODS = {
     "item/commandExecution/requestApproval",

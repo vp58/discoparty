@@ -244,7 +244,7 @@ Disco Party opts in to the experimental surface and compensates with these check
 
 1. Require ChatGPT authentication.
 2. After initialization, require App Server `account/read` to identify a `chatgpt` account.
-3. Require exact Codex CLI `0.151.0`.
+3. Require exact Codex CLI `0.153.4`.
 4. Resolve the launcher and require its reviewed path and SHA-256 hash.
 5. Require the reviewed Apple Silicon native binary path and SHA-256 hash on the exact Apple M5 Max install path.
 6. Generate the full official experimental JSON schema bundle from the installed CLI.

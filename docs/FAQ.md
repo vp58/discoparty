@@ -82,7 +82,7 @@ Disco Party also derives a private mode `0400` snapshot of the six canonical Vau
 
 ## Is App Server stable?
 
-OpenAI currently classifies `codex app-server` as experimental in the [Codex CLI reference](https://developers.openai.com/codex/cli/reference). Disco Party opts in to the official experimental capability, then pins Codex CLI `0.151.0`, the launcher and native arm64 binary hashes, generated schema bundle, server request method set, `gpt-5.6-sol`, OpenAI provider, and Ultra reasoning. An unreviewed update makes preflight fail closed.
+OpenAI currently classifies `codex app-server` as experimental in the [Codex CLI reference](https://developers.openai.com/codex/cli/reference). Disco Party opts in to the official experimental capability, then pins Codex CLI `0.153.4`, the launcher and native arm64 binary hashes, generated schema bundle, server request method set, `gpt-5.6-sol`, OpenAI provider, and Ultra reasoning. An unreviewed update makes preflight fail closed.
 
 ## Should I always install the newest Codex CLI?
 
