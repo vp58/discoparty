@@ -281,7 +281,7 @@ cat > "$FAKE_BIN/codex" <<'EOF'
 #!/usr/bin/env bash
 "${DISCOPARTY_TEST_SECRET_PROBE:?}" "$0" "$@"
 case "${1:-}" in
-  --version) echo "codex-cli 0.151.0" ;;
+  --version) echo "codex-cli 0.153.4" ;;
   login)
     [ "${2:-}" = "status" ] || exit 2
     [ -n "${CODEX_HOME:-}" ] || exit 3
