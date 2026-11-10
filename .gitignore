@@ -26,3 +26,4 @@ __pycache__/
 
 # OS
 .DS_Store
+subscription_router/accounts.toml

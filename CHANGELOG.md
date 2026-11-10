@@ -8,6 +8,7 @@ This project follows the spirit of Keep a Changelog and uses semantic versioning
 
 ### Added
 
+- Optional subscription router (`subscription_router/`) that spreads headless work across several Claude logins, Codex, Cursor and Google Antigravity by lane, with scope, capability and hook-tier filters, provider limit learning with reset-time cooldowns, failover, per-run model logging, a value-free headroom probe, and a one-switch rollback.
 - Optional Codex Discord orchestrator with a dedicated bot, channel, owner-only ingress policy, headless LaunchAgent, official OpenAI App Server client, and read-only local monitor.
 - Isolated Codex `CODEX_HOME`, reviewed config, and separately scoped ChatGPT subscription login through the official macOS Keychain backend, without a manually supplied OpenAI API key or reuse of normal `~/.codex`.
 - Canonical Codex state placement below `~/Library/Application Support/Discoparty`, with matching installer and runtime ownership, mode, topology, and symlink checks so authentication and rollout state cannot be redirected into another Git checkout or synced working tree.

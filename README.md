@@ -140,6 +140,19 @@ A successful run has four visible proofs in Discord:
 
 For Claude, attach to the real interactive listener with `tmux attach -t discoparty-chat`. For Codex, `tmux attach -t discoparty-codex` opens a read-only monitor. Closing the Codex monitor does not stop the LaunchAgent.
 
+## Multi-subscription routing
+
+Most people who run agents all day hold more than one subscription: a personal Claude login, a work Claude seat, a ChatGPT plan for Codex, maybe Cursor or Google Antigravity. The optional [subscription router](docs/SUBSCRIPTION_ROUTER.md) spreads headless work across all of them instead of draining one login and stalling.
+
+- **Lanes:** each kind of task (`claude`, `cron`, `sends`, `coding`, `research`, `planning`) has an ordered chain of accounts in `subscription_router/accounts.toml`.
+- **Filters:** the router drops accounts that are disabled, out of scope (a personal task never reaches a company-only seat), missing a capability such as `browser`, signed out, or cooling.
+- **Hook tier:** sends, workspace writes and credential work stay on tier "A" accounts that carry your full hook layer, whatever the lane says.
+- **Failover and learning:** a provider's limit message becomes a cooldown until its stated reset time, and the next account runs the same prompt. A plan or policy block rests that account for a week.
+- **Audit:** every route and run is logged with the account and the model that served it. `probe` reports sign-in state, cooldowns and per-model run counts, and exits non-zero when a login lapses or no Claude account has headroom.
+- **Rollback:** `DISCOPARTY_ROUTER_DISABLE=1` or `enabled = false` returns every caller to the single default login.
+
+The router never reads tokens and never starts a login. A Claude profile counts as signed in when its profile file names an account.
+
 ## Security posture
 
 Disco Party connects untrusted internet messages to agents that can touch a real computer. The security model starts there.
@@ -170,6 +183,7 @@ The project is still pre-release. The Codex integration uses an official OpenAI 
 - [Security](docs/SECURITY.md): threat model, trust boundaries, sandboxing, approvals, output controls, and limitations.
 - [Security board review](docs/SECURITY_REVIEW_2026-08-29.md): findings, verification evidence, accepted risks, and release gates.
 - [Implementation inventory](docs/IMPLEMENTATION_INVENTORY_2026-08-29.md): exact implementation surface and rationale.
+- [Subscription router](docs/SUBSCRIPTION_ROUTER.md): spread headless work across several AI subscriptions with scope, capability and hook-tier filters, limit learning and failover.
 - [FAQ](docs/FAQ.md): plain-language and technical answers about both providers.
 - [Contributing](CONTRIBUTING.md): issue flow, pull requests, and code style.
 

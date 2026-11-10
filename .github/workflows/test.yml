@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade setuptools==83.0.0
+          python -m pip install --upgrade setuptools==84.1.0
           python -m pip install -r requirements.txt
 
       - name: Compile Python files
@@ -40,6 +40,7 @@ jobs:
           codex_discord_bridge/*.py
           codex-discord/evals/*.py
           codex-discord/tests/*.py
+          subscription_router/*.py
 
       - name: Run Discord Gateway tests
         run: python -m unittest discover -s discord-gateway/tests -t discord-gateway -v
@@ -52,6 +53,9 @@ jobs:
 
       - name: Run Codex bridge tests
         run: PYTHONPATH=. python -m unittest discover -s codex-discord/tests -v
+
+      - name: Run subscription router tests
+        run: python -m unittest discover -s subscription_router/tests -t subscription_router -v
 
       - name: Run Codex installer scratch smoke test
         run: bash codex-discord/tests/test_install_codex.sh
