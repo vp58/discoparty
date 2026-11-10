@@ -1,0 +1,78 @@
+# Disco Party subscription router: example account registry.
+#
+# Copy to accounts.toml (or point DISCOPARTY_ROUTER_REGISTRY at your copy).
+# No secrets belong here. Each entry says only where a login lives and what it
+# may do. The router never reads tokens: a Claude profile counts as signed in
+# when its profile file names an account, and other CLIs report their own
+# login status.
+
+enabled = true
+
+# Minutes an account rests after a limit message that states no reset time.
+default_cooldown_minutes = 60
+
+# Needs that only a tier "A" account may take. Tier A means the run carries
+# your full hook layer (send gate, payment gate, write guards). Keep risky
+# work there whatever a lane says.
+tier_a_needs = ["sends", "workspace_write", "credentials"]
+
+# scope: "personal", "company" or "both". A personal task never reaches a
+# company-only account.
+
+[accounts.claude-primary]
+launcher = "claude"
+config_dir = "default"          # "default" = the normal ~/.claude login
+scope = "both"
+tier = "A"
+capabilities = ["coding", "research", "vision", "web_search", "workspace_write", "sends", "browser", "mcp"]
+priority = 10
+
+[accounts.claude-secondary]
+launcher = "claude"
+config_dir = "~/.claude-secondary"  # second login, run with CLAUDE_CONFIG_DIR
+scope = "both"
+tier = "A"
+capabilities = ["coding", "research", "vision", "web_search", "workspace_write", "sends"]
+priority = 20
+
+[accounts.claude-work]
+launcher = "claude"
+config_dir = "~/.claude-work"
+scope = "company"               # employer seat: company tasks only
+tier = "A"
+capabilities = ["coding", "research", "web_search", "workspace_write", "sends"]
+notes = "org policy blocks plugins and browser use"
+priority = 30
+
+[accounts.codex]
+launcher = "codex"
+scope = "both"
+tier = "B"
+capabilities = ["coding", "research", "web_search"]
+priority = 40
+
+[accounts.gemini]
+launcher = "gemini"
+scope = "both"
+tier = "B"
+capabilities = ["research", "web_search"]
+priority = 50
+enabled = false
+
+[accounts.cursor]
+launcher = "cursor"
+scope = "both"
+tier = "B"
+capabilities = ["coding", "research"]
+priority = 60
+
+# Lanes are ordered chains. The router drops accounts that are disabled, out
+# of scope, missing a capability, signed out or cooling, then keeps this order.
+# Put the account with the most headroom first.
+[lanes]
+claude   = ["claude-secondary", "claude-primary", "claude-work"]
+cron     = ["claude-secondary", "claude-primary", "claude-work", "codex", "cursor"]
+sends    = ["claude-secondary", "claude-primary", "claude-work"]
+planning = ["claude-primary", "claude-secondary"]
+coding   = ["claude-secondary", "codex", "cursor", "claude-primary", "claude-work"]
+research = ["codex", "gemini", "cursor", "claude-secondary", "claude-primary"]
