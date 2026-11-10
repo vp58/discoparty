@@ -1,6 +1,6 @@
 # Subscription router
 
-The subscription router is an optional, stdlib-only module that decides which AI subscription runs a headless task. It suits setups with several logins: two or more Claude profiles, a company Claude seat, a ChatGPT plan for Codex, Cursor, or Gemini.
+The subscription router is an optional, stdlib-only module that decides which AI subscription runs a headless task. It suits setups with several logins: two or more Claude profiles, a company Claude seat, a ChatGPT plan for Codex, Cursor, or Google Antigravity.
 
 ## Setup
 

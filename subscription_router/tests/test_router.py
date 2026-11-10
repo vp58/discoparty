@@ -67,7 +67,7 @@ class ChainTests(RouterTestCase):
     def test_disabled_and_signed_out_accounts_are_skipped(self):
         dec = router.chain("research", reg=self.reg,
                            signed_in_fn=lambda a: a.get("config_dir") != "~/.claude-secondary")
-        self.assertNotIn("gemini", dec["chain"])
+        self.assertNotIn("antigravity", dec["chain"])
         self.assertNotIn("claude-secondary", dec["chain"])
 
     def test_cooling_account_is_skipped(self):

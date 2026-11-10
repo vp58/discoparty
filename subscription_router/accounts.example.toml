@@ -51,11 +51,11 @@ tier = "B"
 capabilities = ["coding", "research", "web_search"]
 priority = 40
 
-[accounts.gemini]
-launcher = "gemini"
+[accounts.antigravity]
+launcher = "agy"  # Google Antigravity CLI; runs in plan (read-only) mode
 scope = "both"
 tier = "B"
-capabilities = ["research", "web_search"]
+capabilities = ["coding", "research"]
 priority = 50
 enabled = false
 
@@ -75,4 +75,4 @@ cron     = ["claude-secondary", "claude-primary", "claude-work", "codex", "curso
 sends    = ["claude-secondary", "claude-primary", "claude-work"]
 planning = ["claude-primary", "claude-secondary"]
 coding   = ["claude-secondary", "codex", "cursor", "claude-primary", "claude-work"]
-research = ["codex", "gemini", "cursor", "claude-secondary", "claude-primary"]
+research = ["codex", "antigravity", "cursor", "claude-secondary", "claude-primary"]

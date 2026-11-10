@@ -2,7 +2,7 @@
 """Disco Party subscription router.
 
 Spreads headless agent work across several AI subscriptions (more than one
-Claude login, Codex, Gemini, Cursor and so on). For each task it:
+Claude login, Codex, Google Antigravity, Cursor and so on). For each task it:
 
 1. takes the lane's ordered chain from the registry,
 2. drops accounts that are disabled, out of scope, missing a needed
@@ -259,8 +259,9 @@ def build_cmd(acct: dict, prompt: str, model: str | None = None):
     elif launcher == "codex":
         cmd = ["codex", "exec", "--skip-git-repo-check", "--sandbox", "read-only", "-"]
         stdin = prompt
-    elif launcher == "gemini":
-        cmd = ["gemini", "-p", prompt]
+    elif launcher == "agy":
+        # Google Antigravity CLI. Plan mode keeps it read-only, like codex --sandbox read-only.
+        cmd = ["agy", "-p", prompt, "--mode", "plan"]
     elif launcher == "cursor":
         cmd = ["cursor-agent", "-p", prompt, "--output-format", "text"]
     else:
@@ -313,12 +314,13 @@ def run(task_type: str, scope: str, needs, prompt: str, model: str | None = None
 
 # ---------------------------------------------------------------- probe
 
-def _status_ok(cmd) -> bool | None:
+def _status_ok(cmd, expect: str = "logged in") -> bool | None:
     try:
-        p = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        p = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
     except (FileNotFoundError, subprocess.TimeoutExpired):
         return None
-    return "logged in" in (p.stdout + p.stderr).lower()
+    text = (p.stdout + p.stderr).lower()
+    return expect in text and (expect == "logged in" or p.returncode == 0)
 
 
 def probe(reg: dict | None = None) -> dict:
@@ -333,6 +335,8 @@ def probe(reg: dict | None = None) -> dict:
             ok = _status_ok(["codex", "login", "status"])
         elif launcher == "cursor":
             ok = _status_ok(["cursor-agent", "status"])
+        elif launcher == "agy":
+            ok = _status_ok(["agy", "models"], expect="gemini")  # listing models needs a live sign-in
         else:
             ok = None  # unknown: learned from run results instead
         c = cooling(aid, cool)

@@ -142,7 +142,7 @@ For Claude, attach to the real interactive listener with `tmux attach -t discopa
 
 ## Multi-subscription routing
 
-Most people who run agents all day hold more than one subscription: a personal Claude login, a work Claude seat, a ChatGPT plan for Codex, maybe Cursor or Gemini. The optional [subscription router](docs/SUBSCRIPTION_ROUTER.md) spreads headless work across all of them instead of draining one login and stalling.
+Most people who run agents all day hold more than one subscription: a personal Claude login, a work Claude seat, a ChatGPT plan for Codex, maybe Cursor or Google Antigravity. The optional [subscription router](docs/SUBSCRIPTION_ROUTER.md) spreads headless work across all of them instead of draining one login and stalling.
 
 - **Lanes:** each kind of task (`claude`, `cron`, `sends`, `coding`, `research`, `planning`) has an ordered chain of accounts in `subscription_router/accounts.toml`.
 - **Filters:** the router drops accounts that are disabled, out of scope (a personal task never reaches a company-only seat), missing a capability such as `browser`, signed out, or cooling.
